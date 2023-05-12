@@ -63,7 +63,7 @@ describe('Ejercicios Async/Await', function() {
     describe('Ejercicio 5.- Declara una función **getRandomPokemonImage** que retorne la url de la imagen de un pokemon aleatorio.', function() {
         it('La función retorna la URL de la imagen de un pokemon aleatorio', async function(){
             const response = await getRandomPokemonImage()
-            expect(response).toContain('.png')
+            expect(response).toContain('sprites')
             
         })
     })
@@ -79,7 +79,7 @@ describe('Ejercicios Async/Await', function() {
     describe('Ejercicio 8.- Declara una función **getRandomCharacterInfo** que retorne de un personaje su imagen, nombre, episodios en los que aparece y el nombre del primer episodio en el que aparece + fecha de estreno', function() {
         it('La función retorna los datos de un personaje', async function(){
             const response = await getRandomCharacterInfo()
-            expect(response.img).toContain('.jpeg')
+            expect(response.img).toContain('avatar')
             expect(response.name.length).toBeGreaterThan(0)
             expect(Array.isArray(response.episodes)).toBe(true)
             expect(response.firstEpisode.length).toBeGreaterThan(0)
