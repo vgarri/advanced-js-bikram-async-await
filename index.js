@@ -5,7 +5,6 @@ async function getRandomPokemon () {
     let random = Math.floor(Math.random() * 151)
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${random}`)
     let pokemon = await response.json()
-    console.log(pokemon);
 
     return pokemon
 }
@@ -67,7 +66,6 @@ async function getRandomCharacter() {
     let random = Math.floor(Math.random() * 100) + 1
     let response = await fetch(`https://rickandmortyapi.com/api/character/${random}`) 
     let character = await response.json()
-    console.log(character);
 
     return character
 }
@@ -77,7 +75,7 @@ async function getRandomCharacter() {
 
 async function getRandomCharacterInfo() {
     let random = Math.floor(Math.random() * 100) + 1
-    let response = await fetch(`https://rickandmortyapi.com/api/character/1`) 
+    let response = await fetch(`https://rickandmortyapi.com/api/character/${random}`) 
     let character = await response.json()
     let img = character.image
     let name = character.name
