@@ -46,7 +46,7 @@ Ejercicio 5.- Declara una función **getRandomPokemonImage** que retorne la url 
 Ejercicio 6.- Declara una función **printPugVsPikachu** que pinte la batalla entre "Pug" y "Pikachu" (no se testea)
 
 
-**EXTRA: async/await con Rick and Morty**
+### Ejercicios con Rick and Morty ###
 
 Usando la api de Rick and Morty https://rickandmortyapi.com/ y sólo async/await:
 
