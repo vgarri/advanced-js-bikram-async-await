@@ -1,0 +1,9 @@
+section {
+    display:flex;
+    height: auto;
+
+}
+section > img {
+    width: auto;
+    height: 300px;
+}
