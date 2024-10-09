@@ -1,8 +1,25 @@
-section {
-    display:flex;
-
-}
 section > img {
     width: auto;
     height: 300px;
+}
+
+article{
+    justify-content: center;
+    box-shadow: darkorchid;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 5px;
+    width: fit-content;
+    padding: 2%;
+
+}
+article > ul {
+    text-align: justify;
+}
+article > h3 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+p {
+    font-family: Arial, sans-serif;
 }

@@ -173,10 +173,9 @@ episodios en los que aparece y el nombre del primer episodio en el que aparece +
 hacer otro fetch para llegar a los ultimos 
 datos. Formato de retorno => (return {img, name, episodes, firstEpisode, dateEpisode})*/
 
-async function getRandomCharacterInfo(){
+async function getRandomCharacterInfo() {
   try {
     let data = await getRandomCharacter();
-    
     let img = data.image;
     let name = data.name;
     let episodes = data.episode;
@@ -185,21 +184,46 @@ async function getRandomCharacterInfo(){
     let datosPrimerEpisodio = await fetch(firstEpisodeUrl);
     let datosFecha = await datosPrimerEpisodio.json();
     let firstEpisode = datosFecha.name;
-    
+
     let dateEpisode = datosFecha.air_date;
-    console.log(dateEpisode)
-    
-  
-    
-    return {img, name, episodes, dateEpisode, firstEpisode, episodesLength}
+    return { img, name, episodes, dateEpisode, firstEpisode, episodesLength }
 
   } catch (error) {
     // Manejar errores de red o del servidor
     console.error('Hubo un problema con la solicitud:', error.message);
   }
 
-
-  
 }
+//Ejercicio 9. Pintar en el dom las tarjetas de personaje.
+async function pintarEnElDom() {
+  let dat = await getRandomCharacterInfo();
+  console.log(dat);
 
+  //Pintamos la tarjeta de personaje en el dom:
+  //empezamos creando los elementos section, ul, li, img
+  let section2 = document.createElement("article");
+  let ul = document.createElement("ul");
+  let li = document.createElement("li");
+  let img = document.createElement("img");
+  img.src = dat.img;
+  //creamos los contenedores de texto, <p>
+  let nombrePersonaje = document.createElement("h3");
+  nombrePersonaje.textContent = (`${dat.name}`);
+  let episodiosPersonaje = document.createElement("p");
+  episodiosPersonaje.textContent = (`Número de episodios en los que sale: ${dat.episodesLength}`);
+  let primerEpisodio = document.createElement("p");
+  primerEpisodio.textContent = (`Primera aparición en la serie: ${dat.firstEpisode}`);
+  //append de p al li
+  li.appendChild(nombrePersonaje);
+  li.appendChild(img);
+  li.appendChild(episodiosPersonaje);
+  li.appendChild(primerEpisodio);
+  //append de lis al ul
+  ul.appendChild(li);
+  section2.appendChild(ul);
+  //append del container al body
+  document.body.appendChild(section2);
+
+}
+pintarEnElDom();
 
