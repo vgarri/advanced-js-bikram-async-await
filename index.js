@@ -42,13 +42,13 @@ necesario para pintar la imagen y el nombre del pokemon en el DOM de la siguient
 //     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 177)}`)
 //     let data = await response.json();
 
-//     return data
+//     return data https://pokeapi.co/api/v2/pokemon/
 
 // }
 async function getRandomPokemon() {
   try {
-    // Realizar la solicitud a la API
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 177)}`)
+    // Realizar la solicitud a la API https://pokeapi.co/api/v2/pokemon-species/
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 151)}`)
     // Verificar si la respuesta es exitosa
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status} - ${response.statusText}`);
@@ -83,7 +83,7 @@ async function getImageAndName() {
 //Ejercicio 3
 async function printImageAndName() {
   try {
-    let data = await getImageAndName();
+    let data = await getImageAndName();// no se pone el if pq esta solicitud ya esta validada
     return `
     <section>
         <img src="${data.img}" alt="${data.name}">
