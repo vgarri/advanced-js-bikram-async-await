@@ -83,7 +83,7 @@ async function getImageAndName() {
 //Ejercicio 3
 async function printImageAndName() {
   try {
-    let data = await getImageAndName();// no se pone el if pq esta solicitud ya esta validada
+    let data = await getImageAndName();// no se pone el if pq no se ha hecho ningun fetch
     return `
     <section>
         <img src="${data.img}" alt="${data.name}">
@@ -116,8 +116,8 @@ async function getRandomDogImage() {
 async function getRandomPokemonImage() {
   try {
     let response = await getRandomPokemon();
-    let data = await response; // aqui no hacemos .json pq ya tiene la info con el json
-    return data.sprites.front_default;
+    let data = await response; // aqui no hacemos .json pq no se ha hecho ningun fetch
+    return data.sprites.front_default || "assets/defaultimage.jpg";
   } catch (error) {
     // Manejar errores de red o del servidor
     console.error('Hubo un problema con la solicitud:', error.message);
@@ -167,7 +167,42 @@ async function getRandomCharacter() {
     console.error('Hubo un problema con la solicitud:', error.message);
   }
 }
+//Ejercicio 8.-
+/* Ejercicio 8.- Declara una función **getRandomCharacterInfo** que retorne de un personaje su imagen, nombre, 
+episodios en los que aparece y el nombre del primer episodio en el que aparece + fecha de estreno, tendrás que 
+hacer otro fetch para llegar a los ultimos 
+datos. Formato de retorno => (return {img, name, episodes, firstEpisode, dateEpisode})*/
+
+async function getRandomCharacterInfo(){
+  try {
+    let data = await getRandomCharacter();
+    
+    let img = data.image;
+    let name = data.name;
+    let episodes = data.episode;
+    console.log(episodes);
+    let episodesLength = episodes.length;
+    let firstEpisodeUrl = episodes[0];
+    console.log(firstEpisodeUrl)
+    let datosPrimerEpisodio = await fetch(firstEpisodeUrl);
+   
+    let datosFecha = await datosPrimerEpisodio.json();
+    let firstEpisode = datosFecha.name;
+    
+    let dateEpisode = datosFecha.air_date;
+    console.log(dateEpisode)
+    
+  
+    
+    return {img, name, episodes, dateEpisode, firstEpisode, episodesLength}
+
+  } catch (error) {
+    // Manejar errores de red o del servidor
+    console.error('Hubo un problema con la solicitud:', error.message);
+  }
 
 
+  
+}
 
 
