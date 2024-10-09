@@ -180,12 +180,9 @@ async function getRandomCharacterInfo(){
     let img = data.image;
     let name = data.name;
     let episodes = data.episode;
-    console.log(episodes);
     let episodesLength = episodes.length;
     let firstEpisodeUrl = episodes[0];
-    console.log(firstEpisodeUrl)
     let datosPrimerEpisodio = await fetch(firstEpisodeUrl);
-   
     let datosFecha = await datosPrimerEpisodio.json();
     let firstEpisode = datosFecha.name;
     
